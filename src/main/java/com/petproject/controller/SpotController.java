@@ -10,7 +10,6 @@ import com.petproject.constants.Constants;
 import com.petproject.dto.SpotDto;
 import com.petproject.service.SpotService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -58,7 +57,7 @@ public class SpotController {
               return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        spot.setName(spotDto.getSpotName());
+        spot.setName(spotDto.getName());
         spot.setCity(spotDto.getCity());
         spot.setCountry(spotDto.getCountry());
         //spot.setContinent(spotDto.getContinent());

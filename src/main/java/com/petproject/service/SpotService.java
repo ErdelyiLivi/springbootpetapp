@@ -1,7 +1,6 @@
 package com.petproject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.petproject.api.Continent;
@@ -66,9 +65,9 @@ public class SpotService {
     public void saveSpot(SpotDto spotDto){
         //TODO make continent nullsafe
         if(spotDto.getSpotId() != null){
-            spotRepository.save(new Spot(spotDto.getSpotId(), spotDto.getSpotName(), Continent.valueOf(spotDto.getContinent().toUpperCase()), spotDto.getCity(), spotDto.getCountry(), false));
+            spotRepository.save(new Spot(spotDto.getSpotId(), spotDto.getName(), Continent.valueOf(spotDto.getContinent().toUpperCase()), spotDto.getCity(), spotDto.getCountry(), false));
         } else {
-            spotRepository.save(new Spot(spotDto.getSpotName(), Continent.valueOf(spotDto.getContinent().toUpperCase()), spotDto.getCountry(), spotDto.getCity()));
+            spotRepository.save(new Spot(spotDto.getName(), Continent.valueOf(spotDto.getContinent().toUpperCase()), spotDto.getCountry(), spotDto.getCity()));
         }
     }
 

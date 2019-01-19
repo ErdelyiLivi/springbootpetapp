@@ -2,7 +2,7 @@ package com.petproject.dto;
 
 public class SpotDto {
     private Long spotId;
-    private String spotName;
+    private String name;
     private String country;
     private String city;
     private String continent;
@@ -10,9 +10,9 @@ public class SpotDto {
     public SpotDto() {
     }
 
-    public SpotDto(Long spotId, String spotName, String country, String city, String continent) {
+    public SpotDto(Long spotId, String name, String country, String city, String continent) {
         this.spotId = spotId;
-        this.spotName = spotName;
+        this.name = name;
         this.country = country;
         this.city = city;
         this.continent = continent;
@@ -22,8 +22,8 @@ public class SpotDto {
         return spotId;
     }
 
-    public String getSpotName() {
-        return spotName;
+    public String getName() {
+        return name;
     }
 
     public String getCountry() {
