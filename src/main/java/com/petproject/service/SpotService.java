@@ -40,17 +40,17 @@ public class SpotService {
         return query.getResultList();
     }
 
-    public List<String> getCountries(List<Spot> spotList){
+    public List<String> getCountries(List<Spot> spotList) {
         List<String> countries = new ArrayList<>();
-        for(Spot spot : spotList){
-            if(!countries.contains(spot.getCountry())){
+        for (Spot spot : spotList) {
+            if (!countries.contains(spot.getCountry())) {
                 countries.add(spot.getCountry());
             }
         }
         return countries;
     }
 
-    public List<Spot> findByCountry(String country, boolean visited){
+    public List<Spot> findByCountry(String country, boolean visited) {
         TypedQuery query = em.createQuery("select a from Spot a where a.country = :country and visited = :visited", Spot.class);
         query.setParameter("country", country);
         query.setParameter("visited", visited);
@@ -58,13 +58,13 @@ public class SpotService {
     }
 
     @Transactional
-    public void saveEntity (Spot spot) {
+    public void saveEntity(Spot spot) {
         em.persist(spot);
     }
 
-    public void saveSpot(SpotDto spotDto){
+    public void saveSpot(SpotDto spotDto) {
         //TODO make continent nullsafe
-        if(spotDto.getSpotId() != null){
+        if (spotDto.getSpotId() != null) {
             spotRepository.save(new Spot(spotDto.getSpotId(), spotDto.getName(), Continent.valueOf(spotDto.getContinent().toUpperCase()), spotDto.getCity(), spotDto.getCountry(), false));
         } else {
             spotRepository.save(new Spot(spotDto.getName(), Continent.valueOf(spotDto.getContinent().toUpperCase()), spotDto.getCountry(), spotDto.getCity()));
@@ -75,20 +75,23 @@ public class SpotService {
         spotRepository.save(spot);
     }
 
-    public void updateSpot(Spot spot){
+    public void updateSpot(Spot spot) {
         saveSpot(spot);
     }
 
-    public Spot findSpotById(long id){
+    public Spot findSpotById(long id) {
         return spotRepository.findById(id).orElse(new Spot());
     }
 
-    public SpotDto getSpotDtoById(long id){
-        Spot spot = spotRepository.findById(id).orElse(new Spot());
-        return new SpotDto(spot.getId(), spot.getName(), spot.getCity(), spot.getCountry(), spot.getContinent().getDisplayName());
-        //return new SpotDto(spot.getName(), spot.getCity(), spot.getCountry(), spot.getContinent().getDisplayName());
+    public SpotDto getSpotDtoById(long id) {
+        if (id == 0) {
+            return new SpotDto();
+        } else {
+            Spot spot = spotRepository.findById(id).orElse(new Spot());
+            return new SpotDto(spot.getId(), spot.getName(), spot.getCity(), spot.getCountry(), spot.getContinent().getDisplayName());
+            //return new SpotDto(spot.getName(), spot.getCity(), spot.getCountry(), spot.getContinent().getDisplayName());
+        }
     }
-
 
 
 }
