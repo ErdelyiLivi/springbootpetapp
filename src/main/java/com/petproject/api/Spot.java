@@ -38,13 +38,6 @@ public class Spot implements Serializable {
         this.name = name;
     }
 
-    public Spot(String name, Continent continent, String country, String city) {
-        this.name = name;
-        this.continent = continent;
-        this.country = country;
-        this.city = city;
-    }
-
     public Spot(Long id, String name, Continent continent, String country, String city, boolean visited) {
         this.id = id;
         this.name = name;
