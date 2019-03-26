@@ -2,6 +2,7 @@ package com.petproject.api;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by ler on 2017-03-19.
@@ -9,6 +10,7 @@ import java.io.Serializable;
 
 
 @Entity
+@Table(name = "SPOT")
 public class Spot implements Serializable {
     @Id
     @GeneratedValue
@@ -29,6 +31,9 @@ public class Spot implements Serializable {
 
     @Column(name = "VISITED")
     private boolean visited;
+
+    @OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
+    private Set<ImageSource> imageSources;
 
     public Spot() {
     }
