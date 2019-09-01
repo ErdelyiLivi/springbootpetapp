@@ -29,6 +29,7 @@ public class ImageSource {
     public ImageSource() {
     }
 
+    //TODO use only spotId
     public ImageSource(String name, String url, Spot spot) {
         this.name = name;
         this.url = url;

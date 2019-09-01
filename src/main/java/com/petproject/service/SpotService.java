@@ -40,5 +40,9 @@ public class SpotService {
         }
     }
 
+    public Spot getSpotById(long id){
+        return spotRepository.getOne(id);
+    }
+
 
 }

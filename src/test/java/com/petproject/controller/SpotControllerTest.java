@@ -3,6 +3,7 @@ package com.petproject.controller;
 import com.petproject.api.Spot;
 import com.petproject.constants.Constants;
 import com.petproject.dto.SpotDto;
+import com.petproject.service.ImageSourceService;
 import com.petproject.service.SpotService;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -38,6 +39,8 @@ public class SpotControllerTest {
 
     @MockBean
     private SpotService spotService;
+    @MockBean
+    private ImageSourceService imageSourceService;
 
     @Test
     public void testGetAllSpots() throws Exception {
