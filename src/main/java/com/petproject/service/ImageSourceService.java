@@ -11,6 +11,7 @@ import com.petproject.api.ImageSource;
 import com.petproject.api.Spot;
 import com.petproject.repository.ImageSourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ImageSourceService {
 
-    //TODO make file path configurable
-    private static final String FILE_DIRECTORY = "C:/programming/petapp/pictures";
+    @Value("${pictures.path}")
+    private String picturesDirectory;
     private ImageSourceRepository imageSourceRepository;
     private ResourceLoader resourceLoader;
     private SpotService spotService;
@@ -38,7 +39,7 @@ public class ImageSourceService {
     }
 
     public void storeFile(MultipartFile file) throws IOException {
-        Path filePath = Paths.get(FILE_DIRECTORY + "/" + file.getOriginalFilename());
+        Path filePath = Paths.get(picturesDirectory + "/" + file.getOriginalFilename());
 
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
