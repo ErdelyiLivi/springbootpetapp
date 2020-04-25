@@ -19,7 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ImageSourceService {
 
-    private static final String FILE_DIRECTORY = "/var/www";
+    //TODO make file path configurable
+    private static final String FILE_DIRECTORY = "C:/programming/petapp/pictures";
     private ImageSourceRepository imageSourceRepository;
     private ResourceLoader resourceLoader;
     private SpotService spotService;
@@ -44,7 +45,7 @@ public class ImageSourceService {
     }
 
     public Resource loadAsResource(String filename){
-        return resourceLoader.getResource("file:/var/www/" + filename);
+        return resourceLoader.getResource("file:C:/programming/petapp/pictures/" + filename);
     }
 
     public void saveFileData(String name, String url, Long spotId) {
