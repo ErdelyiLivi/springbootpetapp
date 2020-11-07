@@ -23,12 +23,13 @@ public class SpotService {
     }
 
     public List<Spot> getAllSpots() {
+        //TODO mapping for continent here or in angular with translation
         return spotRepository.findAll();
     }
 
     public void saveSpot(SpotDto spotDto) {
         //TODO make continent nullsafe
-        spotRepository.save(new Spot(spotDto.getSpotId(), spotDto.getName(), Continent.valueOf(spotDto.getContinent().toUpperCase()), spotDto.getCity(), spotDto.getCountry(), false));
+        spotRepository.save(new Spot(spotDto.getSpotId(), spotDto.getName(), Continent.valueOf(spotDto.getContinent().toUpperCase()), spotDto.getCountry(), spotDto.getCity(), false));
     }
 
     public SpotDto getSpotDtoById(long id) {
