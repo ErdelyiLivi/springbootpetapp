@@ -1,11 +1,9 @@
 package com.petproject.constants;
 
-public interface Constants {
+public class Constants {
 
-    //TODO get rid of this
-    static final String GET_SPOT_BY_ID = "/getSpot/{spotId}";
-    static final String GET_ALL_SPOTS = "/getAllSpots";
-    static final String SAVE_SPOT = "/saveSpot";
-    static final String UPDATE_SPOT = "/updateSpot/{id}";
-    static final String GET_IMAGES = "/getImages/{spotId}";
+    public static final String GET_SPOT_BY_ID = "/getSpot/{spotId}";
+    public static final String GET_ALL_SPOTS = "/getAllSpots";
+    public static final String SAVE_SPOT = "/saveSpot";
+    public static final String GET_IMAGES = "/getImages/{spotId}";
 }

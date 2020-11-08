@@ -22,14 +22,13 @@ public class ImageSource {
     private String url;
 
     @ManyToOne
-    @JoinColumn(name = "spot")
+    @JoinColumn(name = "spot_id")
     private Spot spot;
 
 
     public ImageSource() {
     }
 
-    //TODO use only spotId
     public ImageSource(String name, String url, Spot spot) {
         this.name = name;
         this.url = url;

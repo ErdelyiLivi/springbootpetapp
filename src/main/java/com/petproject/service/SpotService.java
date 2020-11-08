@@ -1,7 +1,7 @@
 package com.petproject.service;
 
-import com.petproject.api.Continent;
 import com.petproject.api.Spot;
+import com.petproject.dto.SpotConverter;
 import com.petproject.dto.SpotDto;
 import com.petproject.repository.SpotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +28,7 @@ public class SpotService {
     }
 
     public void saveSpot(SpotDto spotDto) {
-        //TODO make continent nullsafe
-        spotRepository.save(new Spot(spotDto.getSpotId(), spotDto.getName(), Continent.valueOf(spotDto.getContinent().toUpperCase()), spotDto.getCountry(), spotDto.getCity(), false));
+        spotRepository.save(SpotConverter.dtoToEntity(spotDto));
     }
 
     public SpotDto getSpotDtoById(long id) {
@@ -37,7 +36,7 @@ public class SpotService {
             return new SpotDto();
         } else {
             Spot spot = spotRepository.findById(id).orElse(new Spot());
-            return new SpotDto(spot.getId(), spot.getName(), spot.getCity(), spot.getCountry(), spot.getContinent().getDisplayName());
+            return SpotConverter.entityToDto(spot);
         }
     }
 

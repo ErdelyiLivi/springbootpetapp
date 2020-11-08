@@ -39,18 +39,18 @@ public class ImageSourceService {
     }
 
     public void storeFile(MultipartFile file) throws IOException {
-        Path filePath = Paths.get(picturesDirectory + "/" + file.getOriginalFilename());
+        Path filePath = Paths.get(picturesDirectory + file.getOriginalFilename());
 
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
     }
 
     public Resource loadAsResource(String filename){
-        return resourceLoader.getResource("file:C:/programming/petapp/pictures/" + filename);
+        return resourceLoader.getResource("file:"+ picturesDirectory + filename);
     }
 
     public void saveFileData(String name, String url, Long spotId) {
-        //TODO change dependency to spotId or find less db call solution
+        //TODO find less db call solution
         Spot spotDB = spotService.getSpotById(spotId);
         imageSourceRepository.save(new ImageSource(name, url, spotDB));
     }
