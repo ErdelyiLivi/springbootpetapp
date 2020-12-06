@@ -6,16 +6,18 @@ public class SpotDto {
     private String country;
     private String city;
     private String continent;
+    private String notes;
 
     public SpotDto() {
     }
 
-    public SpotDto(Long spotId, String name, String country, String city, String continent) {
+    public SpotDto(Long spotId, String name, String country, String city, String continent, String notes) {
         this.spotId = spotId;
         this.name = name;
         this.country = country;
         this.city = city;
         this.continent = continent;
+        this.notes = notes;
     }
 
     public Long getSpotId() {
@@ -37,4 +39,9 @@ public class SpotDto {
     public String getContinent() {
         return continent;
     }
+
+    public String getNotes() {
+        return notes;
+    }
+
 }

@@ -43,7 +43,7 @@ public class SpotServiceTest {
     @Test
     public void saveSpot() {
         //GIVEN
-        SpotDto spotDto = new SpotDto(1l, "TestSpot", "", "", "EUROPE");
+        SpotDto spotDto = new SpotDto(1l, "TestSpot", "", "", "EUROPE", "");
         //WHEN
         spotService.saveSpot(spotDto);
         //THEN
@@ -68,7 +68,7 @@ public class SpotServiceTest {
     public void getSpotDtoByIdNotZero() {
         //GIVEN
         //WHEN
-        Spot exampleSpot = new Spot(1l, "ExampleSpot", Continent.EUROPE, "", "", false);
+        Spot exampleSpot = new Spot(1l, "ExampleSpot", Continent.EUROPE, "", "", "", false);
         when(spotRepository.findById(1l)).thenReturn(Optional.of(exampleSpot));
         SpotDto result = spotService.getSpotDtoById(1l);
         //THEN

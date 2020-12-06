@@ -29,6 +29,9 @@ public class Spot implements Serializable {
     @Column(name = "CITY")
     private String city;
 
+    @Column(name = "NOTES")
+    private String notes;
+
     @Column(name = "VISITED")
     private boolean visited;
 
@@ -43,15 +46,17 @@ public class Spot implements Serializable {
         this.name = name;
     }
 
-    public Spot(Long id, String name, Continent continent, String country, String city, boolean visited) {
+    public Spot(Long id, String name, Continent continent, String country, String city, String notes, boolean visited) {
         this.id = id;
         this.name = name;
         this.continent = continent;
         this.country = country;
         this.city = city;
+        this.notes = notes;
         this.visited = visited;
     }
 
+    // TODO get rid of unused methods
     public String getCountry() {
         return country;
     }
@@ -96,4 +101,11 @@ public class Spot implements Serializable {
         return visited;
     }
 
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 }

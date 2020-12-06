@@ -77,7 +77,7 @@ public class SpotControllerTest {
     @Test
     public void testGetSpotDtoById() throws Exception {
         //GIVEN
-        SpotDto exampleSpot = new SpotDto(1l, "MyTest", "", "", "");
+        SpotDto exampleSpot = new SpotDto(1l, "MyTest", "", "", "", "");
 
         //WHEN
         when(spotService.getSpotDtoById(anyLong())).thenReturn(exampleSpot);
